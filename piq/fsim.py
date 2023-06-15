@@ -104,7 +104,7 @@ def fsim(x: torch.Tensor, y: torch.Tensor, reduction: str = 'mean',
     PC = similarity_map(pc_x, pc_y, T1)
     GM = similarity_map(grad_map_x, grad_map_y, T2)
     pc_max = torch.where(pc_x > pc_y, pc_x, pc_y)
-    score = torch.pow(GM, 1) * torch.power(PC, 10) * pc_max # weight of GM feature and PC feature, more focus on PC features
+    score = torch.pow(GM, 1) * torch.pow(PC, 10) * pc_max # weight of GM feature and PC feature, more focus on PC features
 
     if chromatic:
         assert num_channels == 3, "Chromatic component can be computed only for RGB images!"
